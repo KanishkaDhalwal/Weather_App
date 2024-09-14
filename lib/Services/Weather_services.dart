@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class WeatherService {
-  final String apiKey = '6301fddf2f394281f16bd4bfa51d09e2';
-  final String forecastBaseUrl = 'https://api.weather.com/v1/'; // Ensure HTTPS
-  final String searchBaseUrl = 'https://api.weather.com/v1/'; // Ensure HTTPS
+  final String apiKey = '665fa64896164622b7b200859241309'; // Replace with your valid API key
+  final String forecastBaseUrl = 'https://api.weatherapi.com/v1/forecast.json';
+  final String searchBaseUrl = 'https://api.weatherapi.com/v1/search.json';
 
   // Fetch current weather
   Future<Map<String, dynamic>> fetchCurrentWeather(String city) async {
@@ -13,7 +13,7 @@ class WeatherService {
     if (response.statusCode == 200) {
       return json.decode(response.body); // Parse the JSON data
     } else {
-      throw Exception('Failed to fetch weather data');
+      throw Exception('Failed to fetch weather data: ${response.body}');
     }
   }
 
@@ -24,7 +24,7 @@ class WeatherService {
     if (response.statusCode == 200) {
       return json.decode(response.body); // Parse the JSON data
     } else {
-      throw Exception('Failed to fetch weather data');
+      throw Exception('Failed to fetch weather data: ${response.body}');
     }
   }
 
@@ -35,7 +35,7 @@ class WeatherService {
     if (response.statusCode == 200) {
       return json.decode(response.body); // Parse the JSON data
     } else {
-      throw Exception('Failed to fetch city suggestions');
+      throw Exception('Failed to fetch city suggestions: ${response.body}');
     }
   }
 }
